@@ -8,8 +8,8 @@ export * from './numbers'
 export * from './tokens'
 
 export const INIT_CODE_HASH: { [chainId: number]: string } = {
-  [ChainId.SMARTBCH]:       '0xacca68b46e4aa677641d8d20d81c9f4b252af83de62ff9e2fb58a9b648ee3537',
-  [ChainId.SMARTBCH_AMBER]: '0xacca68b46e4aa677641d8d20d81c9f4b252af83de62ff9e2fb58a9b648ee3537',
+  [ChainId.CANTO]:       '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f',
+  [ChainId.CANTO_AMBER]: '0xacca68b46e4aa677641d8d20d81c9f4b252af83de62ff9e2fb58a9b648ee3537',
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)

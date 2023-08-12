@@ -1,2 +1,2 @@
 // Native exports
-export { SmartBCH } from './SmartBCH'
+export { Canto } from './Canto'

@@ -1,4 +1,4 @@
-import { SmartBCH } from './Native'
+import { Canto } from './Native'
 import { Token } from './Token'
 
 describe('Currency', () => {
@@ -10,10 +10,10 @@ describe('Currency', () => {
 
   describe('#equals', () => {
     it('bch on same chains is bch', () => {
-      expect(SmartBCH.onChain(10000).equals(SmartBCH.onChain(10000)))
+      expect(Canto.onChain(10000).equals(Canto.onChain(10000)))
     })
     it('bch is not token0', () => {
-      expect(SmartBCH.onChain(10000).equals(t0)).toStrictEqual(false)
+      expect(Canto.onChain(10000).equals(t0)).toStrictEqual(false)
     })
     it('token1 is not token0', () => {
       expect(t1.equals(t0)).toStrictEqual(false)

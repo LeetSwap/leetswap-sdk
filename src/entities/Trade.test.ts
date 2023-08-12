@@ -1,11 +1,11 @@
-import { CurrencyAmount, SmartBCH, Pair, Percent, Price, Route, Token, Trade } from '.'
+import { CurrencyAmount, Canto, Pair, Percent, Price, Route, Token, Trade } from '.'
 
 import JSBI from 'jsbi'
 import { TradeType } from '../enums'
-import { WBCH } from '../constants'
+import { WCANTO } from '../constants'
 
 describe('Trade', () => {
-  const ETHER = SmartBCH.onChain(10000)
+  const ETHER = Canto.onChain(10000)
   const token0 = new Token(10000, '0x0000000000000000000000000000000000000001', 18, 't0')
   const token1 = new Token(10000, '0x0000000000000000000000000000000000000002', 18, 't1')
   const token2 = new Token(10000, '0x0000000000000000000000000000000000000003', 18, 't2')
@@ -33,7 +33,7 @@ describe('Trade', () => {
   )
 
   const pair_weth_0 = new Pair(
-    CurrencyAmount.fromRawAmount(WBCH[10000], JSBI.BigInt(1000)),
+    CurrencyAmount.fromRawAmount(WCANTO[10000], JSBI.BigInt(1000)),
     CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000))
   )
 
@@ -45,7 +45,7 @@ describe('Trade', () => {
   it('can be constructed with ETHER as input', () => {
     const trade = new Trade(
       new Route([pair_weth_0], ETHER, token0),
-      CurrencyAmount.fromRawAmount(SmartBCH.onChain(10000), JSBI.BigInt(100)),
+      CurrencyAmount.fromRawAmount(Canto.onChain(10000), JSBI.BigInt(100)),
       TradeType.EXACT_INPUT
     )
     expect(trade.inputAmount.currency).toEqual(ETHER)
@@ -64,7 +64,7 @@ describe('Trade', () => {
   it('can be constructed with ETHER as output', () => {
     const trade = new Trade(
       new Route([pair_weth_0], token0, ETHER),
-      CurrencyAmount.fromRawAmount(SmartBCH.onChain(10000), JSBI.BigInt(100)),
+      CurrencyAmount.fromRawAmount(Canto.onChain(10000), JSBI.BigInt(100)),
       TradeType.EXACT_OUTPUT
     )
     expect(trade.inputAmount.currency).toEqual(token0)
@@ -164,15 +164,15 @@ describe('Trade', () => {
     it('works for ETHER currency input', () => {
       const result = Trade.bestTradeExactIn(
         [pair_weth_0, pair_0_1, pair_0_3, pair_1_3],
-        CurrencyAmount.fromRawAmount(SmartBCH.onChain(10000), JSBI.BigInt(100)),
+        CurrencyAmount.fromRawAmount(Canto.onChain(10000), JSBI.BigInt(100)),
         token3
       )
       expect(result).toHaveLength(2)
       expect(result[0].inputAmount.currency).toEqual(ETHER)
-      expect(result[0].route.path).toEqual([WBCH[10000], token0, token1, token3])
+      expect(result[0].route.path).toEqual([WCANTO[10000], token0, token1, token3])
       expect(result[0].outputAmount.currency).toEqual(token3)
       expect(result[1].inputAmount.currency).toEqual(ETHER)
-      expect(result[1].route.path).toEqual([WBCH[10000], token0, token3])
+      expect(result[1].route.path).toEqual([WCANTO[10000], token0, token3])
       expect(result[1].outputAmount.currency).toEqual(token3)
     })
     it('works for ETHER currency output', () => {
@@ -183,10 +183,10 @@ describe('Trade', () => {
       )
       expect(result).toHaveLength(2)
       expect(result[0].inputAmount.currency).toEqual(token3)
-      expect(result[0].route.path).toEqual([token3, token0, WBCH[10000]])
+      expect(result[0].route.path).toEqual([token3, token0, WCANTO[10000]])
       expect(result[0].outputAmount.currency).toEqual(ETHER)
       expect(result[1].inputAmount.currency).toEqual(token3)
-      expect(result[1].route.path).toEqual([token3, token1, token0, WBCH[10000]])
+      expect(result[1].route.path).toEqual([token3, token1, token0, WCANTO[10000]])
       expect(result[1].outputAmount.currency).toEqual(ETHER)
     })
   })
@@ -438,24 +438,24 @@ describe('Trade', () => {
       )
       expect(result).toHaveLength(2)
       expect(result[0].inputAmount.currency).toEqual(ETHER)
-      expect(result[0].route.path).toEqual([WBCH[10000], token0, token1, token3])
+      expect(result[0].route.path).toEqual([WCANTO[10000], token0, token1, token3])
       expect(result[0].outputAmount.currency).toEqual(token3)
       expect(result[1].inputAmount.currency).toEqual(ETHER)
-      expect(result[1].route.path).toEqual([WBCH[10000], token0, token3])
+      expect(result[1].route.path).toEqual([WCANTO[10000], token0, token3])
       expect(result[1].outputAmount.currency).toEqual(token3)
     })
     it('works for ETHER currency output', () => {
       const result = Trade.bestTradeExactOut(
         [pair_weth_0, pair_0_1, pair_0_3, pair_1_3],
         token3,
-        CurrencyAmount.fromRawAmount(SmartBCH.onChain(10000), JSBI.BigInt(100))
+        CurrencyAmount.fromRawAmount(Canto.onChain(10000), JSBI.BigInt(100))
       )
       expect(result).toHaveLength(2)
       expect(result[0].inputAmount.currency).toEqual(token3)
-      expect(result[0].route.path).toEqual([token3, token0, WBCH[10000]])
+      expect(result[0].route.path).toEqual([token3, token0, WCANTO[10000]])
       expect(result[0].outputAmount.currency).toEqual(ETHER)
       expect(result[1].inputAmount.currency).toEqual(token3)
-      expect(result[1].route.path).toEqual([token3, token1, token0, WBCH[10000]])
+      expect(result[1].route.path).toEqual([token3, token1, token0, WCANTO[10000]])
       expect(result[1].outputAmount.currency).toEqual(ETHER)
     })
   })

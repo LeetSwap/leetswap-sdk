@@ -1,8 +1,8 @@
-import { SmartBCH } from '../entities/Native'
+import { Canto } from '../entities/Native'
 
 import { ChainId } from '../enums'
 
 export const NATIVE = {
-  [ChainId.SMARTBCH]: SmartBCH.onChain(ChainId.SMARTBCH),
-  [ChainId.SMARTBCH_AMBER]: SmartBCH.onChain(ChainId.SMARTBCH_AMBER)
+  [ChainId.CANTO]: Canto.onChain(ChainId.CANTO),
+  [ChainId.CANTO_AMBER]: Canto.onChain(ChainId.CANTO_AMBER)
 }

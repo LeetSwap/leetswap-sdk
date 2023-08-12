@@ -1,5 +1,5 @@
 import { CurrencyAmount } from './CurrencyAmount'
-import { SmartBCH } from './Native'
+import { Canto } from './Native'
 import JSBI from 'jsbi'
 import { MaxUint256 } from '../constants'
 import { Percent } from './Percent'
@@ -26,9 +26,9 @@ describe('CurrencyAmount', () => {
 
   describe('#ether', () => {
     it('produces ether amount', () => {
-      const amount = CurrencyAmount.fromRawAmount(SmartBCH.onChain(10000), 100)
+      const amount = CurrencyAmount.fromRawAmount(Canto.onChain(10000), 100)
       expect(amount.quotient).toEqual(JSBI.BigInt(100))
-      expect(amount.currency).toEqual(SmartBCH.onChain(10000))
+      expect(amount.currency).toEqual(Canto.onChain(10000))
     })
   })
 

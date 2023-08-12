@@ -1,4 +1,4 @@
-import { CurrencyAmount, SmartBCH, Percent, Price, Token } from '../entities'
+import { CurrencyAmount, Canto, Percent, Price, Token } from '../entities'
 import { computePriceImpact } from './computePriceImpact'
 
 describe('#computePriceImpact', () => {
@@ -11,8 +11,8 @@ describe('#computePriceImpact', () => {
   it('is correct for zero', () => {
     expect(
       computePriceImpact(
-        new Price(SmartBCH.onChain(10000), t0, 10, 100),
-        CurrencyAmount.fromRawAmount(SmartBCH.onChain(1), 10),
+        new Price(Canto.onChain(10000), t0, 10, 100),
+        CurrencyAmount.fromRawAmount(Canto.onChain(1), 10),
         CurrencyAmount.fromRawAmount(t0, 100)
       )
     ).toEqual(new Percent(0, 10000))
