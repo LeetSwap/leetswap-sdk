@@ -76,7 +76,7 @@ export const ENS_REGISTRAR_ADDRESS: AddressMap = {
 }
 
 export const MULTICALL2_ADDRESS: AddressMap = {
-  [ChainId.CANTO]: '',
+  [ChainId.CANTO]: '0x637490E68AA50Ea810688a52D7464E10c25A77c1',
   [ChainId.CANTO_AMBER]: '0xAF15A45d934a83b95daCFEbaACCaED8cF97e8200',
 }
 
